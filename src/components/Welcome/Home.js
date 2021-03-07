@@ -36,6 +36,9 @@ const Title = styled.span`
   color: #e50914;
   font-size: 2.5rem;
   font-weight: bold;
+  @media (max-width: 700px) {
+    font-size: 2rem;
+  }
 `;
 
 const IntroductionContainer = styled.div`

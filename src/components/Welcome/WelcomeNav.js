@@ -18,22 +18,34 @@ const Nav = styled.ul`
   }
 `;
 
-export default () => (
-  <Nav>
-    <li>
-      <Link to="/home">HOME</Link>
-    </li>
-    <li>
-      <Link>ABOUT</Link>
-    </li>
-    <li>
-      <Link>PORTFOLIO</Link>
-    </li>
-    <li>
-      <Link>BLOG</Link>
-    </li>
-    <li>
-      <Link>CONTACT</Link>
-    </li>
-  </Nav>
-);
+export default () => {
+  return (
+    <Nav>
+      <li>
+        <Link to="/home">HOME</Link>
+      </li>
+      <li>
+        <Link>ABOUT</Link>
+      </li>
+      <li>
+        <a
+          href="https://github.com/Yunseonghwan?tab=repositories"
+          target="blank"
+        >
+          PORTFOLIO
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.blogger.com/blog/posts/3328672408708138314?bpli=1&pli=1"
+          target="blank"
+        >
+          BLOG
+        </a>
+      </li>
+      <li>
+        <Link>CONTACT</Link>
+      </li>
+    </Nav>
+  );
+};
