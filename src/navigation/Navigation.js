@@ -1,25 +1,19 @@
-import { useRecoilState } from "recoil";
-
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import { isLoggedinState } from "../stores/loginState";
 import Welcome from "../pages/Auth/Welcome";
-import Home from "../components/Welcome/Home";
+import Home from "../pages/Main/Home";
 
 const Navigation = () => {
-  const [isLoggedin, setIsLoggedIn] = useRecoilState(isLoggedinState);
   return (
     <Router>
       <Switch>
-        {isLoggedin ? null : (
-          <>
-            <Route exact path="/">
-              <Welcome />
-            </Route>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-          </>
-        )}
+        <Route exact path="/movie">
+          <Home />
+        </Route>
+        <>
+          <Route exact path="/">
+            <Welcome />
+          </Route>
+        </>
       </Switch>
     </Router>
   );
