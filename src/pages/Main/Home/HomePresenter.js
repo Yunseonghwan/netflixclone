@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { apiImage } from "../../../stores/Api/Api";
+
+const THDB_KEY = "43d1cb232767ef5c553e1bce9ae70ba2";
 
 const Container = styled.div`
   width: 100%;
@@ -28,37 +31,50 @@ const Nav = styled.li`
     color: white;
   }
 `;
-export default () => (
-  <Container>
-    <div>
+export default ({ nowMovie }) => {
+  console.log("sadas", nowMovie);
+  return (
+    <Container>
+      {nowMovie.map((item) => (
+        <img
+          src={apiImage(item.backdrop_path)}
+          style={{
+            width: "100px",
+            height: "100px",
+            backgroundColor: "white",
+          }}
+        />
+      ))}
       <div>
-        <NavContainer1>
-          <Nav>
-            <Title>HWANFLIX</Title>
-          </Nav>
-          <Nav>
-            <Link>홈</Link>
-          </Nav>
-          <Nav>
-            <Link>TV프로그램</Link>
-          </Nav>
-          <Nav>
-            <Link>영화</Link>
-          </Nav>
-          <Nav>
-            <Link>NEW! 콘텐츠</Link>
-          </Nav>
-          <Nav>
-            <Link>내가 찜한 콘텐츠</Link>
-          </Nav>
-        </NavContainer1>
+        <div>
+          <NavContainer1>
+            <Nav>
+              <Title>HWANFLIX</Title>
+            </Nav>
+            <Nav>
+              <Link>홈</Link>
+            </Nav>
+            <Nav>
+              <Link>TV프로그램</Link>
+            </Nav>
+            <Nav>
+              <Link>영화</Link>
+            </Nav>
+            <Nav>
+              <Link>NEW! 콘텐츠</Link>
+            </Nav>
+            <Nav>
+              <Link>내가 찜한 콘텐츠</Link>
+            </Nav>
+          </NavContainer1>
+        </div>
+        <div>
+          <ul>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <ul>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-    </div>
-  </Container>
-);
+    </Container>
+  );
+};
