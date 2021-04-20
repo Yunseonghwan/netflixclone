@@ -20,7 +20,6 @@ export const nowPlayingApi = selector({
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${THDB_KEY}`
     );
     const data = res.data.results;
-    console.log("dasda", data);
 
     return data;
   },

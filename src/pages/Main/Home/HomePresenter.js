@@ -1,8 +1,8 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { apiImage } from "../../../stores/Api/Api";
 
-const THDB_KEY = "43d1cb232767ef5c553e1bce9ae70ba2";
+import NowSwiper from "../../../components/main/Home/NowSwiper";
 
 const Container = styled.div`
   width: 100%;
@@ -19,6 +19,12 @@ const Title = styled.span`
   }
 `;
 
+const CardContainer = styled.div`
+  display: flex;
+  position: absolute;
+  transition: transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+`;
+
 const NavContainer1 = styled.ul`
   display: flex;
   align-items: center;
@@ -32,19 +38,48 @@ const Nav = styled.li`
   }
 `;
 export default ({ nowMovie }) => {
-  console.log("sadas", nowMovie);
+  const [card, setCard] = useState(nowMovie);
+  const [movieIndex, setMovieIndex] = useState(nowMovie.length);
+
+  const next = () => {
+    const nextIndex = movieIndex + 1;
+    if (movieIndex === 20) {
+      setMovieIndex(20);
+    } else {
+      setMovieIndex(nextIndex);
+      console.log(movieIndex);
+    }
+  };
+
+  const prev = () => {
+    const nextIndex = movieIndex - 1;
+    if (movieIndex === 0) {
+      setMovieIndex(0);
+    } else {
+      setMovieIndex(nextIndex);
+      console.log(movieIndex);
+    }
+  };
+
+  useEffect(() => {
+    console.log(movieIndex);
+  }, []);
+
   return (
     <Container>
-      {nowMovie.map((item) => (
-        <img
-          src={apiImage(item.backdrop_path)}
-          style={{
-            width: "100px",
-            height: "100px",
-            backgroundColor: "white",
-          }}
-        />
-      ))}
+      <CardContainer>
+        {nowMovie.map((item, index) => (
+          <NowSwiper id={item.id} image={item.backdrop_path} />
+        ))}
+      </CardContainer>
+      <div style={{ paddingTop: 500 }}>
+        <button onClick={prev} disabled={movieIndex === 0}>
+          Prev
+        </button>
+        <button onClick={next} disabled={movieIndex === card.length - 1}>
+          Next
+        </button>
+      </div>
       <div>
         <div>
           <NavContainer1>
